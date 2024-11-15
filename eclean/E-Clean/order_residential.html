@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Residential Cleaning</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <nav class="bg-gray-800 shadow-lg text-white">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a class="text-xl font-bold" href="index.html">
+                E-Clean
+            </a>
+        </div>
+        <nav class="absolute top-4 right-4">
+            <a href="dashboard_user.html" class="text-white text-lg font-semibold hover:text-gray-300">Back</a>
+        </nav>
+    </nav>
+
+    <header class="bg-blue-800 text-white text-center py-12">
+        <h1 class="text-4xl font-bold">Order Residential Cleaning</h1>
+        <p class="mt-4 text-lg">Fill out the form below to place your order.</p>
+    </header>
+
+    <main class="py-12">
+        <div class="container mx-auto px-4">
+            <form class="bg-white shadow-lg rounded-lg p-8">
+                <!-- Customer Information -->
+                <h2 class="text-2xl font-bold mb-6">Customer Information</h2>
+                <div class="mb-4">
+                    <label class="block text-gray-700 mb-2" for="name">Full Name</label>
+                    <input class="border border-gray-300 p-3 w-full rounded" type="text" id="name" placeholder="Enter your name" required>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 mb-2" for="email">Email</label>
+                    <input class="border border-gray-300 p-3 w-full rounded" type="email" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 mb-2" for="phone">Phone Number</label>
+                    <input class="border border-gray-300 p-3 w-full rounded" type="text" id="phone" placeholder="Enter your phone number" required>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 mb-2" for="address">Address</label>
+                    <textarea class="border border-gray-300 p-3 w-full rounded" id="address" rows="3" placeholder="Enter your address" required></textarea>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 mb-2" for="date">Preferred Date</label>
+                    <input class="border border-gray-300 p-3 w-full rounded" type="date" id="date" required>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 mb-2" for="time">Preferred Time</label>
+                    <input class="border border-gray-300 p-3 w-full rounded" type="time" id="time" required>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 mb-2" for="duration">Duration (in hours)</label>
+                    <input class="border border-gray-300 p-3 w-full rounded" type="number" id="duration" placeholder="Enter duration in hours" required min="1" oninput="calculateTotal()">
+                </div>
+
+                <!-- Cost Information -->
+                <div class="mb-4">
+                    <p class="text-gray-600">Rate: <strong>Rp 30.000 per hour</strong></p>
+                    <p class="text-gray-600">Estimated Total: <span id="totalCost" class="font-bold">Rp 0</span></p>
+                </div>
+
+                <!-- Payment Information -->
+                <h2 class="text-2xl font-bold mb-6">Payment Information</h2>
+                <div class="mb-4">
+                    <label class="block text-gray-700 mb-2" for="paymentMethod">Select Payment Method</label>
+                    <select class="border border-gray-300 p-3 w-full rounded" id="paymentMethod" required>
+                        <option value="" disabled selected>Select a payment method</option>
+                        <option value="cash">Cash</option>
+                        <option value="gopay">GoPay</option>
+                        <option value="dana">Dana</option>
+                    </select>
+                </div>
+
+                <!-- GoPay Payment -->
+                <div id="gopayDetails" class="hidden">
+                    <h3 class="text-lg font-bold mb-4">GoPay Details</h3>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 mb-2" for="gopayNumber">GoPay Number</label>
+                        <input class="border border-gray-300 p-3 w-full rounded" type="text" id="gopayNumber" placeholder="Enter your GoPay number" required>
+                    </div>
+                </div>
+
+                <!-- Dana Payment -->
+                <div id="danaDetails" class="hidden">
+                    <h3 class="text-lg font-bold mb-4">Dana Details</h3>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 mb-2" for="danaNumber">Dana Number</label>
+                        <input class="border border-gray-300 p-3 w-full rounded" type="text" id="danaNumber" placeholder="Enter your Dana number" required>
+                    </div>
+                </div>
+
+                <button class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition" type="submit">
+                    Submit Order
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white text-center py-4">
+        <p>&copy; 2024 E-Clean. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const paymentMethodSelect = document.getElementById('paymentMethod');
+        const gopayDetails = document.getElementById('gopayDetails');
+        const danaDetails = document.getElementById('danaDetails');
+        const totalCostElement = document.getElementById('totalCost');
+        const durationInput = document.getElementById('duration');
+
+        paymentMethodSelect.addEventListener('change', function() {
+            // Hide all payment details sections
+            gopayDetails.classList.add('hidden');
+            danaDetails.classList.add('hidden');
+
+            // Show relevant payment fields based on selection
+            if (this.value === 'gopay') {
+                gopayDetails.classList.remove('hidden');
+            } else if (this.value === 'dana') {
+                danaDetails.classList.remove('hidden');
+            }
+        });
+
+        function calculateTotal() {
+            const duration = durationInput.value || 0;
+            const ratePerHour = 30000;
+            const total = duration * ratePerHour;
+            totalCostElement.textContent = `Rp ${total.toLocaleString()}`;
+        }
+    </script>
+</body>
+</html>
