@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Clean - Service</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+        .hero-text, .hero-text p {
+            z-index: 2;
+            position: relative;
+        }
+         /* Mobile menu styles */
+         @media (max-width: 768px) {
+            #mobile-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #1f2937;
+                padding: 1rem;
+                z-index: 40;
+            }
+
+            #mobile-menu a {
+                display: block;
+                padding: 0.75rem;
+                margin: 0.5rem 0;
+                text-align: center;
+            }
+        }
+    </style>
+    <script>
+        function signIn() {
+            localStorage.setItem('signedIn', 'true');
+            window.location.href = 'services.html';
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function changeLanguage(language) {
+    console.log('Selected language:', language);
+    const elements = document.querySelectorAll('[data-en]');
+    console.log('Elements to update:', elements);
+    elements.forEach(element => {
+        if (language === 'en') {
+            element.textContent = element.getAttribute('data-en');
+        } else if (language === 'id') {
+            element.textContent = element.getAttribute('data-id');
+        }
+    });
+    document.getElementById('languageDropdown').querySelector('span').textContent = language.toUpperCase();
+}
+
+    </script>
+</head>
+<body class="bg-gray-100 font-roboto">
+    <nav class="bg-gray-800 text-white relative">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <svg class="w-8 h-8 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.437 17.328a9.97 9.97 0 0 0 1.563-5.328c0-5.523-4.477-10-10-10S2 6.477 2 12s4.477 10 10 10a9.967 9.967 0 0 0 6.192-2.166c.577.737 1.444 1.166 2.363 1.166a3 3 0 0 0 3-3c0-1.038-.67-1.924-1.616-2.272zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/>
+                    </svg>
+                    <span class="text-xl font-bold">E-Clean</span>
+                </div>
+
+                <!-- Hamburger Menu Button -->
+                <button class="md:hidden focus:outline-none" onclick="toggleMenu()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="text-gray-300 hover:text-white" data-en="Home" data-id="Beranda">Home</a>
+                    <a href="aboutus.html" class="text-gray-300 hover:text-white" data-en="About Us" data-id="Tentang Kami">About Us</a>
+                    <a href="services.html" class="text-gray-300 hover:text-white" data-en="Services" data-id="Layanan">Services</a>
+                    <a href="mailto:eclean601@gmail.com" class="text-gray-300 hover:text-white" data-en="Contact with us" data-id="Hubungi kami">Contact us</a>
+                    
+                    <!-- <div class="relative language-dropdown">
+                        <button id="languageDropdown" class="flex items-center space-x-1">
+                            <span>EN</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="language-dropdown-content">
+                            <a href="#" onclick="changeLanguage('en')" class="text-gray-800 hover:bg-gray-100 block px-4 py-2">English</a>
+                            <a href="#" onclick="changeLanguage('id')" class="text-gray-800 hover:bg-gray-100 block px-4 py-2">Bahasa Indonesia</a>
+                        </div>
+                    </div> -->
+
+                    <a href="tesreg.php" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md" data-en="Login" data-id="Masuk">Login</a>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden">
+                <a href="index.html" class="text-gray-300 hover:bg-gray-700" data-en="Home" data-id="Beranda">Home</a>
+                <a href="aboutus.html" class="text-gray-300 hover:bg-gray-700" data-en="About Us" data-id="Tentang Kami">About Us</a>
+                <a href="services.html" class="text-gray-300 hover:bg-gray-700" data-en="Services" data-id="Layanan">Services</a>
+                <a href="mailto:eclean601@gmail.com" class="text-gray-300 hover:bg-gray-700" data-en="Contact with us" data-id="Hubungi kami">Contact us</a>
+                
+                <!-- <div class="language-dropdown">
+                    <button onclick="toggleLanguageDropdown()" class="flex items-center space-x-1 w-full text-left">
+                        <span>EN</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="language-dropdown-content bg-gray-700">
+                        <a href="#" onclick="changeLanguage('en')" class="text-gray-300 hover:bg-gray-600 block px-4 py-2">English</a>
+                        <a href="#" onclick="changeLanguage('id')" class="text-gray-300 hover:bg-gray-600 block px-4 py-2">Bahasa Indonesia</a>
+                    </div>
+                </div> -->
+
+                <a href="tesreg.php" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md block mt-4" data-en="Login" data-id="Masuk">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- <script>
+        function signIn() {
+            localStorage.setItem('signedIn', 'true');
+            window.location.href = 'services.html';
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function changeLanguage(language) {
+    console.log('Selected language:', language);
+    const elements = document.querySelectorAll('[data-en]');
+    console.log('Elements to update:', elements);
+    elements.forEach(element => {
+        if (language === 'en') {
+            element.textContent = element.getAttribute('data-en');
+        } else if (language === 'id') {
+            element.textContent = element.getAttribute('data-id');
+        }
+    });
+    document.getElementById('languageDropdown').querySelector('span').textContent = language.toUpperCase();
+}
+
+    </script> -->
+</body>
+</html>
+
+
+    <!-- Hero Section -->
+    <div class="relative text-white">
+        <img src="mufid-majnun-LsMTepYpr88-unsplash.jpg" class="w-full h-auto object-cover" alt="Cleaning Service">
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center px-4">
+            <h1 class="text-4xl md:text-6xl font-bold" data-en="Our Services" data-id="Layanan Kami">Our Services</h1>
+            <p class="mt-4 text-lg md:text-2xl" data-en="We offer a wide range of cleaning solutions to meet your needs." data-id="Kami menawarkan beragam solusi pembersihan untuk memenuhi kebutuhan Anda.">
+                We offer a wide range of cleaning solutions to meet your needs.
+            </p>
+        </div>
+    </div>
+
+    <!-- Our Services Section -->
+    <section class="py-16" style="background-color: #4c6687;">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800" data-en="Our Services" data-id="Layanan Kami">
+                Our Services
+            </h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                <!-- Residential Cleaning Card -->
+                <div class="rounded-xl shadow-lg p-6 transition-all hover:shadow-xl hover:scale-[1.02]" style="background-color: #c8c6c6;">
+                    <div class="bg-blue-50 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-center text-gray-800" data-en="Residential Cleaning" data-id="Pembersihan Rumah">
+                        Residential Cleaning
+                    </h3>
+                    <p class="text-gray-600 text-center" data-en="Get your home sparkling clean with our expert team" data-id="Bersihkan rumah Anda dengan tim ahli kami">
+                        Get your home sparkling clean with our expert team
+                    </p>
+                </div>
+    
+                <!-- Commercial Cleaning Card -->
+                <div class="rounded-xl shadow-lg p-6 transition-all hover:shadow-xl hover:scale-[1.02]" style="background-color: #f7f6f2;">
+                    <div class="bg-green-50 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-center text-gray-800" data-en="Commercial Cleaning" data-id="Pembersihan Komersial">
+                        Commercial Cleaning
+                    </h3>
+                    <p class="text-gray-600 text-center" data-en="Keep your office or business clean and hygienic" data-id="Jaga kantor atau bisnis Anda tetap bersih dan higienis">
+                        Keep your office or business clean and hygienic
+                    </p>
+                </div>
+    
+                <!-- Eco-Friendly Cleaning Card -->
+                <div class="rounded-xl shadow-lg p-6 transition-all hover:shadow-xl hover:scale-[1.02]" style="background-color: #f0e5cf;">
+                    <div class="bg-teal-50 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-center text-gray-800" data-en="Eco-Friendly Cleaning" data-id="Pembersihan Ramah Lingkungan">
+                        Eco-Friendly Cleaning
+                    </h3>
+                    <p class="text-gray-600 text-center" data-en="Our eco-friendly cleaning solutions for a greener tomorrow" data-id="Solusi pembersihan ramah lingkungan kami untuk masa depan yang lebih hijau">
+                        Our eco-friendly cleaning solutions for a greener tomorrow
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white text-center py-4">
+        <p>© 2024 E-Clean. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
