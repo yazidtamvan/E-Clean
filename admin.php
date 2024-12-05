@@ -35,14 +35,23 @@ $result = $conn->query($sql);
 <body class="bg-gray-50">
     <!-- Navigation -->
     <nav class="bg-white shadow-lg border-b border-gray-100">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <a class="flex items-center space-x-3" href="#">
-                    <svg class="w-8 h-8 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M20.437 17.328a9.97 9.97 0 0 0 1.563-5.328c0-5.523-4.477-10-10-10S2 6.477 2 12s4.477 10 10 10a9.967 9.967 0 0 0 6.192-2.166c.577.737 1.444 1.166 2.363 1.166a3 3 0 0 0 3-3c0-1.038-.67-1.924-1.616-2.272zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/>
-                    </svg>
-                    <span class="text-xl font-bold text-gray-800">E-Clean Admin</span>
-                </a>
+    <div class="container mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+            <!-- Logo -->
+            <a class="flex items-center space-x-3" href="#">
+                <svg class="w-8 h-8 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill="url(#cleanGradient)" d="M20.437 17.328a9.97 9.97 0 0 0 1.563-5.328c0-5.523-4.477-10-10-10S2 6.477 2 12s4.477 10 10 10a9.967 9.967 0 0 0 6.192-2.166c.577.737 1.444 1.166 2.363 1.166a3 3 0 0 0 3-3c0-1.038-.67-1.924-1.616-2.272zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/>
+                    <defs>
+                        <linearGradient id="cleanGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#3B82F6; stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#10B981; stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <span class="text-5l font-playfair font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-400 transition-all duration-500 ease-in-out transform hover:scale-110">
+                    E-Clean
+                </span>
+            </a>
                 <div class="flex items-center space-x-4">
                     <span class="text-gray-600">Total Orders: <?php echo $total_orders; ?></span>
                     <a href="logout.php" class="text-red-600 hover:text-red-800 transition">Logout</a>
@@ -77,7 +86,6 @@ $result = $conn->query($sql);
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Address</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total Cost</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Payment Method</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
