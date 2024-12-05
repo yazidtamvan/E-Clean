@@ -120,7 +120,7 @@ $conn->close();
 
     <!-- Main Content -->
     <main class="container mx-auto px-6 pb-16">
-        <form method="POST" action="" class="max-w-4xl mx-auto">
+        <form method="POST" action="">
             <!-- Service Selection Cards -->
             <div class="grid md:grid-cols-3 gap-6 mb-12">
                 <div id="residential-card" class="service-card bg-white rounded-xl shadow-md p-6 border border-gray-100 cursor-pointer" onclick="selectService('Residential Cleaning', 30000, 'residential-card')">
@@ -129,57 +129,57 @@ $conn->close();
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                         </svg>
                     </div>
-                    <input type="hidden" id="cleaning_type" name="cleaning_type" value="Residential Cleaning">
+                    <h3 class="text-lg font-semibold mb-2">Residential Cleaning</h3>
                     <p class="text-gray-600 mb-4">Perfect for homes and apartments</p>
                     <p class="text-blue-600 font-semibold">Rp 30,000/hour</p>
                 </div>
 
-                <div id="eco-friendly-card" class="service-card bg-white rounded-xl shadow-md p-6 border border-gray-100 cursor-pointer" onclick="selectService('Eco Friendly Cleaning', 40000, 'eco-friendly-card')">
+                <div id="commercial-card" class="service-card bg-white rounded-xl shadow-md p-6 border border-gray-100 cursor-pointer" onclick="selectService('Commercial Cleaning', 40000, 'commercial-card')">
                     <div class="text-blue-600 mb-4">
                         <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
                         </svg>
                     </div>
-                    <input type="hidden" id="cleaning_type" name="cleaning_type" value="Commercial Cleaning">
+                    <h3 class="text-lg font-semibold mb-2">Commercial Cleaning</h3>
                     <p class="text-gray-600 mb-4">Ideal for offices and business spaces</p>
                     <p class="text-blue-600 font-semibold">Rp 40,000/hour</p>
                 </div>
 
-                <div id="commercial-card" class="service-card bg-white rounded-xl shadow-md p-6 border border-gray-100 cursor-pointer" onclick="selectService('Commercial Cleaning', 50000, 'commercial-card')">
+                <div id="eco-friendly-card" class="service-card bg-white rounded-xl shadow-md p-6 border border-gray-100 cursor-pointer" onclick="selectService('Eco Friendly Cleaning', 50000, 'eco-friendly-card')">
                     <div class="text-blue-600 mb-4">
                         <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7v2a1 1 0 001 1h1m0 0h1a1 1 0 011 1v10a1 1 0 01-1 1H5a1 1 0 01-1-1V11a1 1 0 011-1h1m0 0h1a1 1 0 001-1V7m0 10h8m-4 0v4m-5-4h14"></path>
                         </svg>
                     </div>
-                    <input type="hidden" id="cleaning_type" name="cleaning_type" value="Eco- Friendly Cleaning">
+                    <h3 class="text-lg font-semibold mb-2">Eco Friendly Cleaning</h3>
                     <p class="text-gray-600 mb-4">Eco-conscious cleaning for your space</p>
                     <p class="text-blue-600 font-semibold">Rp 50,000/hour</p>
                 </div>
             </div>
 
-            <!-- Form for User Details -->
-            <form method="POST" action="">
-    <div class="mb-6">
-        <label for="name" class="block text-lg font-semibold mb-2">Full Name:</label>
-        <input type="text" id="name" name="name" class="form-input bg-white border border-gray-300 rounded-lg p-3 w-full" >
-    </div>
+            <!-- User Details Form -->
+            <div class="mb-6">
+                <label for="name" class="block text-lg font-semibold mb-2">Full Name:</label>
+                <input type="text" id="name" name="name" class="form-input bg-white border border-gray-300 rounded-lg p-3 w-full" required>
+            </div>
 
-    <div class="mb-6">
-        <label for="email" class="block text-lg font-semibold mb-2">Email:</label>
-        <input type="email" id="email" name="email" class="form-input bg-white border border-gray-300 rounded-lg p-3 w-full" >
-    </div>
+            <div class="mb-6">
+                <label for="email" class="block text-lg font-semibold mb-2">Email:</label>
+                <input type="email" id="email" name="email" class="form-input bg-white border border-gray-300 rounded-lg p-3 w-full" required>
+            </div>
 
-    <div class="mb-6">
-        <label for="phone" class="block text-lg font-semibold mb-2">Phone Number:</label>
-        <input type="text" id="phone" name="phone" class="form-input bg-white border border-gray-300 rounded-lg p-3 w-full" value="<?php echo isset($user) ? htmlspecialchars($user['phone']) : ''; ?>" required>
-    </div>
+            <div class="mb-6">
+                <label for="phone" class="block text-lg font-semibold mb-2">Phone Number:</label>
+                <input type="text" id="phone" name="phone" class="form-input bg-white border border-gray-300 rounded-lg p-3 w-full" required>
+            </div>
 
-    <div class="mb-6">
-        <label for="address" class="block text-lg font-semibold mb-2">Address:</label>
-        <textarea id="address" name="address" class="form-input bg-white border border-gray-300 rounded-lg p-3 w-full" rows="3" required><?php echo isset($user) ? htmlspecialchars($user['address']) : ''; ?></textarea>
-    </div>
+            <div class="mb-6">
+                <label for="address" class="block text-lg font-semibold mb-2">Address:</label>
+                <textarea id="address" name="address" class="form-input bg-white border border-gray-300 rounded-lg p-3 w-full" rows="3" required></textarea>
+            </div>
 
-    
+            <!-- Hidden input for cleaning type -->
+            <input type="hidden" id="cleaning_type" name="cleaning_type" value="Residential Cleaning">
 
             <!-- Duration and Cost Calculation -->
             <div class="mb-6">
@@ -191,17 +191,6 @@ $conn->close();
                 <label for="total_cost" class="block text-lg font-semibold mb-2">Total Cost (Rp):</label>
                 <input type="text" id="total_cost" name="total_cost" value="30000" readonly class="form-input bg-gray-200 border border-gray-300 rounded-lg p-3 w-full" required>
             </div>
-
-            <!-- Payment Method -->
-            <div class="mb-6">
-                <label for="payment_method" class="block text-lg font-semibold mb-2">Payment Method:</label>
-                <select id="payment_method" name="payment_method" class="form-input bg-white border border-gray-300 rounded-lg p-3 w-full" onchange="togglePaymentNumberField()" required>
-                    <option value="Cash">Cash</option>
-                    <option value="GoPay">GoPay</option>
-                    <option value="Dana">Dana</option>
-                </select>
-            </div>
-
             <!-- Payment Number -->
             <div class="mb-6" id="payment_number_field" style="display: none;">
                 <label for="payment_number" class="block text-lg font-semibold mb-2">Payment Number:</label>
@@ -227,6 +216,7 @@ $conn->close();
             </div>
         </form>
     </main>
+
 
     <script>
         let selectedService = null;
