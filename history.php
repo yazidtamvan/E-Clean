@@ -271,7 +271,6 @@ $conn->close();
                             <div class="space-y-1">
                                 <h3 class="font-semibold text-gray-800">${order.cleaning_type || 'Standard Cleaning'}</h3>
                                 <p class="text-gray-600 text-sm">Duration: ${order.duration || 0} Hours</p>
-                                <p class="text-gray-600 text-sm">Payment: ${order.pay_method || 'N/A'}</p>
                                 <p class="text-gray-600 text-sm">Amount: ${formatCurrency(order.total_cost || 0)}</p>
                             </div>
                         </div>
@@ -325,7 +324,6 @@ $conn->close();
                     <div class="space-y-1">
                         <h3 class="font-semibold text-gray-800">${order.cleaning_type || 'Standard Cleaning'}</h3>
                         <p class="text-gray-600 text-sm">Duration: ${order.duration || 0} Hours</p>
-                        <p class="text-gray-600 text-sm">Payment: ${order.pay_method || 'N/A'}</p>
                         <p class="text-gray-600 text-sm">Amount: ${formatCurrency(order.total_cost || 0)}</p>
                     </div>
                 </div>
